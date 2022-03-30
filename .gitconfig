@@ -3,3 +3,50 @@
 	email = eng.thiagoalberici@gmail.com
 [core]
 	editor = vscode
+[init]
+    defaultBranch = main
+[alias]
+  # Who am I? IT'S A ME, MARIO! :)
+  me = config user.name
+  # Add all files
+  a = add --all
+  # Commit with message
+  c = "!f() { git commit -m \"$*\"; }; f"
+  # Push staging
+  p = push
+  # force push to a branch
+  pf = push --force origin
+  # Less verbose status
+  s = status -sb
+  # Pretty log
+  l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  # Show files changed in some commit
+  sf = show --name-only
+  # Amend the previous commit to include new changes
+  amend = commit --amend --no-edit
+  # Remove files cached but on git ignore
+  rm = rm -r --chached .
+  # Checkout
+  co = checkout
+  # Syncronize local branchs with remote
+  fe = fetch origin
+  # Fork a branch
+  fork = checkout -b
+  # Remote commits ahead of mine
+  incoming = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})
+  # Remote commits ahead of local
+  outgoing = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' @{u}..)
+  # The missing command <3
+  unstage = reset HEAD --
+  # Undo modifications to a file
+  undo = checkout --
+  # Review commits before pushing
+  ready = rebase -i @{u}
+  # Resolve conflict using ours
+  resolve-ours = !(grep -lr '<<<<<<<' . | xargs git checkout --ours)
+  # Resolve conflict using theirs
+  resolve-theirs = !(grep -lr '<<<<<<<' . | xargs git checkout --theirs)
+  # List committers
+  committers = !(git log | grep Author | sort | uniq -c | sort -n -r)
+  # Undo the last made commit
+  rollback = reset --soft HEAD~1
