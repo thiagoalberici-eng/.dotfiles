@@ -41,7 +41,7 @@
   # Undo modifications to a file
   undo = checkout --
   # Review commits before pushing
-  ready = rebase -i @{u}
+  review = rebase -i @{u}
   # Resolve conflict using ours
   resolve-ours = !(grep -lr '<<<<<<<' . | xargs git checkout --ours)
   # Resolve conflict using theirs
