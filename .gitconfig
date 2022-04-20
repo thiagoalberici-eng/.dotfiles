@@ -1,43 +1,49 @@
 [user]
 	name = thiagoalberici-eng
 	email = eng.thiagoalberici@gmail.com
+[credential]
+	helper = cache
 [core]
-	editor = vscode
+	editor = code --wait
 [init]
     defaultBranch = main
 [alias]
-  # Who am I? IT'S A ME, MARIO! :)
+  # Who am I?
   me = config user.name
-  # Add all files
+  # Add all files to staged area
   a = add --all
+  # Remove files from staged area
+  unstage = reset HEAD --
   # Commit with message
   c = "!f() { git commit -m \"$*\"; }; f"
-  # Push staging
-  p = push
-  # force push to a branch
-  pf = push --force origin
+  # Amend the previous commit to include new changes
+  amend = commit --amend --no-edit
   # Less verbose status
   s = status -sb
   # Pretty log
   l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-  # Show files changed in some commit
-  sf = show --name-only
-  # Amend the previous commit to include new changes
-  amend = commit --amend --no-edit
   # Remove files cached but on git ignore
   rm = rm -r --chached .
-  # Checkout
-  co = checkout
+  # Push staging
+  p = push
+  # force push to a branch
+  pf = push --force origin
+  # create a new branch
+  bn = checkout -b
+  # delete a branch
+  bd = branch -d
+  # move to a branch
+  bm = checkout
+  # list all branches
+  bl = branch -a  
+  # merge a branch
+  m = merge  
   # Syncronize local branchs with remote
   fe = fetch origin
-  # Fork a branch
-  fork = checkout -b
   # Remote commits ahead of mine
   incoming = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})
   # Remote commits ahead of local
   outgoing = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' @{u}..)
-  # The missing command <3
-  unstage = reset HEAD --
   # Undo modifications to a file
   undo = checkout --
   # Review commits before pushing
