@@ -106,6 +106,7 @@ source $ZSH/oh-my-zsh.sh
 alias dev="cd ~/dev"
 alias np="/mnt/c/Program\ Files/Notepad++/notepad++.exe"
 alias zshconfig="np ~/.zshrc"
+alias ll="ls -la"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

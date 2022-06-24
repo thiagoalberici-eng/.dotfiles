@@ -16,6 +16,8 @@
   unstage = reset HEAD --
   # Commit with message
   c = "!f() { git commit -m \"$*\"; }; f"
+  # Undo the last made commit
+  rollback = reset --soft HEAD~1
   # Amend the previous commit to include new changes
   amend = commit --amend --no-edit
   # Less verbose status
@@ -54,5 +56,3 @@
   resolve-theirs = !(grep -lr '<<<<<<<' . | xargs git checkout --theirs)
   # List committers
   committers = !(git log | grep Author | sort | uniq -c | sort -n -r)
-  # Undo the last made commit
-  rollback = reset --soft HEAD~1
