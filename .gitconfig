@@ -56,3 +56,7 @@
   resolve-theirs = !(grep -lr '<<<<<<<' . | xargs git checkout --theirs)
   # List committers
   committers = !(git log | grep Author | sort | uniq -c | sort -n -r)
+  # Update submodules
+  submodules = submodule update --init --recursive
+  # Refresh the hole project
+  refresh = !(git fetch && git pull && git submodule update --init --recursive && git status)%   
