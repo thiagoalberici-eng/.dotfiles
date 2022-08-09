@@ -1,12 +1,7 @@
 [user]
-	name = thiagoalberici-eng
-	email = eng.thiagoalberici@gmail.com
-[credential]
-	helper = cache
-[core]
-	editor = code --wait
-[init]
-    defaultBranch = main
+	name = thiago.roberto
+	email = thiago.roberto@hexagon.com
+
 [alias]
   # Who am I?
   me = config user.name
@@ -16,6 +11,8 @@
   unstage = reset HEAD --
   # Commit with message
   c = "!f() { git commit -m \"$*\"; }; f"
+  # Commit with -n and message
+  cn = "!f() { git commit -n -m \"$*\"; }; f"
   # Undo the last made commit
   rollback = reset --soft HEAD~1
   # Amend the previous commit to include new changes
@@ -59,4 +56,4 @@
   # Update submodules
   submodules = submodule update --init --recursive
   # Refresh the hole project
-  refresh = !(git fetch && git pull && git submodule update --init --recursive && git status)%   
+  refresh = !(git fetch && git pull && git submodule update --init --recursive && git status)
