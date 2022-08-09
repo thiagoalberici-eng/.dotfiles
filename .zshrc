@@ -94,20 +94,48 @@ source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+CMAKE_CXX_COMPILER_LAUNCHER=ccache
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-alias dev="cd ~/dev"
-alias np="/mnt/c/Program\ Files/Notepad++/notepad++.exe"
-alias zshconfig="np ~/.zshrc"
-alias ll="ls -la"
+# exporting environment variables
+export CMAKE_CXX_COMPILER_LAUNCHER
+export HXGN_TOOLCHAIN_ROOT=/opt/hxgn-x11/4.9.88/
+export HXGN_IMX8_TOOLCHAIN_ROOT=/opt/fsl-imx-xwayland/5.4-zeus/
+export HXGN_IMX8MP_TOOLCHAIN_ROOT=/opt/fsl-imx-xwayland/tqma8mpxl-hxgn/5.4-zeus
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Set personal aliases
+
+#Paths
+alias ..="cd .."
+alias dev="cd ~/dev"
+alias down="cd ~/Downloads"
+alias docs="cd ~/Documents"
+alias desk="cd ~/Desktop"
+alias adamantium="cd /home/git/adamantium"
+alias adamantium2="cd /home/git/adamantium2"
+alias isobus-ecu="cd /home/git/isobus-ecu"
+#x64
+alias bx64="./dume/build_x64.sh"
+alias rx64="(cd Titanium3D; ../build/src/x64/Titanium3D/titanium)"
+alias brx64="./dume/build_x64.sh && (cd Titanium3D/; ../build/src/x64/Titanium3D/titanium)"
+#imx6
+alias bimx6="./dume/build_7-imx6.sh"
+alias rimx6="echo not implemented"
+alias brimx6="echo not implemented"
+#tests
+alias btx64="./dume/build_tests_x64.sh"
+alias rtx64="./dume/run_tests_x64.sh"
+alias brtx64="./dume/build_tests_x64.sh && ./dume/run_tests_x64.sh"
+alias btimx6="./dume/build_tests_7-imx6.sh"
+alias rtimx6="./dume/run_tests_7-imx6.sh"
+alias brtimx6="./dume/build_tests_7-imx6.sh && ./dume/run_tests_7-imx6.sh"
+#WSL
+alias np="/mnt/c/Program\ Files/Notepad++/notepad++.exe"
+#others
+alias ll="ls -la"
+alias zshconfig="np ~/.zshrc"
+alias update_ubuntu='sudo apt update && sudo apt dist-upgrade -y && sudo apt autoremove -y && sudo apt autoclean && sudo apt clean && sudo apt update'
+alias sizes="du -sh *"
