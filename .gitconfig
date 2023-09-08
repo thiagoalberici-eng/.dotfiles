@@ -17,16 +17,19 @@
   rollback = reset --soft HEAD~1
   # Amend the previous commit to include new changes
   amend = commit --amend --no-edit
+  # Amend the previous commit with -n to include new changes
+  amendn = commit --amend --no-edit -n
+  # Stash all files (even untracked)
+  stadd = stash --include-untracked
+  # Apply top stash (keep it in stash)
+  stapp = stash apply
+
   # Less verbose status
   s = status -sb
   # Pretty log
   l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   # Remove files cached but on git ignore
   rm = rm -r --chached .
-  # Push staging
-  p = push
-  # force push to a branch
-  pf = push --force origin
   # create a new branch
   bn = checkout -b
   # delete a branch
@@ -35,10 +38,12 @@
   bm = checkout
   # list all branches
   bl = branch -a  
-  # merge a branch
-  m = merge  
-  # Syncronize local branchs with remote
-  fe = fetch origin
+  # rebase iteractive
+  rbi = rebase -i 
+  # rebase abort
+  rba = rebase --abort 
+  # rebase continue
+  rbc = rebase --continue 
   # Remote commits ahead of mine
   incoming = !(git fetch --quiet && git log --pretty=format:'%C(yellow)%h %C(white)- %C(red)%an %C(white)- %C(cyan)%d%Creset %s %C(white)- %ar%Creset' ..@{u})
   # Remote commits ahead of local
@@ -47,13 +52,9 @@
   undo = checkout --
   # Review commits before pushing
   review = rebase -i @{u}
-  # Resolve conflict using ours
-  resolve-ours = !(grep -lr '<<<<<<<' . | xargs git checkout --ours)
-  # Resolve conflict using theirs
-  resolve-theirs = !(grep -lr '<<<<<<<' . | xargs git checkout --theirs)
-  # List committers
-  committers = !(git log | grep Author | sort | uniq -c | sort -n -r)
   # Update submodules
   submodules = submodule update --init --recursive
   # Refresh the hole project
-  refresh = !(git fetch && git pull && git submodule update --init --recursive && git status)
+  refresh = !(git fetch && git pull && git submodule update --init --recursive && git status && ./dume/setup_git_repo.sh)
+[safe]
+	directory = /opt/cucumber-cpp
